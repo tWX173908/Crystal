@@ -19,4 +19,10 @@
     <NoWarn>1701;1702</NoWarn>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="Language.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 </Project>

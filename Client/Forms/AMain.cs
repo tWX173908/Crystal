@@ -115,7 +115,7 @@ namespace Launcher
             var download = new Download();
             download.Info = DownloadList.Dequeue();
             DownloadFile(download);
-            
+
         }
 
         private void CleanUp()
@@ -166,7 +166,7 @@ namespace Launcher
                     //assume we got a html page back with an error code so it's not a patchlist
                     return;
                 }
-                reader.BaseStream.Seek(0,SeekOrigin.Begin);
+                reader.BaseStream.Seek(0, SeekOrigin.Begin);
                 int count = reader.ReadInt32();
 
                 for (int i = 0; i < count; i++)
@@ -260,7 +260,7 @@ namespace Launcher
 
                     //first remove the original file if needed
                     string[] specialfiles = { ".dll", ".exe", ".pdb" };
-                    if (File.Exists(fileNameOut) && ( specialfiles.Contains( Path.GetExtension(fileNameOut).ToLower() )))
+                    if (File.Exists(fileNameOut) && (specialfiles.Contains(Path.GetExtension(fileNameOut).ToLower())))
                     {
                         string oldFilename = Path.Combine(Path.GetDirectoryName(fileNameOut), ("Old__" + Path.GetFileName(fileNameOut)));
 
@@ -269,7 +269,7 @@ namespace Launcher
                             //if there's another previous backup: delete it first
                             if (File.Exists(oldFilename))
                             {
-                                File.Delete(oldFilename);   
+                                File.Delete(oldFilename);
                             }
                             File.Move(fileNameOut, oldFilename);
                         }
@@ -400,13 +400,13 @@ namespace Launcher
             Launch_pb.Enabled = false;
             ProgressCurrent_pb.Width = 5;
             TotalProg_pb.Width = 5;
-            Version_label.Text = string.Format("Build: {0}.{1}.{2}", Globals.ProductCodename, Settings.UseTestConfig ? "Debug" : "Release", Application.ProductVersion);
+            //Version_label.Text = string.Format("Build: {0}.{1}.{2}", Globals.ProductCodename, Settings.UseTestConfig ? "Debug" : "Release", Application.ProductVersion);
 
-            if (Settings.P_ServerName != String.Empty)
-            {
-                Name_label.Visible = true;
-                Name_label.Text = Settings.P_ServerName;
-            }
+            //if (Settings.P_ServerName != String.Empty)
+            //{
+            //    Name_label.Visible = true;
+            //    Name_label.Text = Settings.P_ServerName;
+            //}
 
             _workThread = new Thread(Start) { IsBackground = true };
             _workThread.Start();
@@ -660,8 +660,8 @@ namespace Launcher
 
         private void Credit_label_Click(object sender, EventArgs e)
         {
-            if (Credit_label.Text == "Powered by Crystal M2") Credit_label.Text = "Designed by Breezer";
-            else Credit_label.Text = "Powered by Crystal M2";
+            //if (Credit_label.Text == "Powered by Crystal M2") Credit_label.Text = "Designed by Breezer";
+            //else Credit_label.Text = "Powered by Crystal M2";
         }
 
         private void AMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -719,5 +719,5 @@ namespace Launcher
                     File.Move(oldFilename, originalFilename);
             }
         }
-    } 
+    }
 }
